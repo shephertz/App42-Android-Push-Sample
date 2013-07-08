@@ -39,8 +39,16 @@ A. After registering for PushNotification go to AppHQ console and click on Push 
   application after selecting User tab.
 B. Select desired user from registered UserList and click on Send Message Button.
 C. Send appropriate message to user by clicking Send Button.
+
 ```
 
+__Send Message using App42 API :__ If you want to send PushNotification using App42 API , pass the userId and 
+message in below method .
+  
+```
+PushNotificationService pushService.sendPushMessageToUser(userId,message);
+
+```
 
 # Design Details:
 __Intialization :__ You have to initialize  your application first before registering for PushNotification in your MainActivty.java file.
