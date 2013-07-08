@@ -40,6 +40,35 @@ A. After registering for PushNotification go to AppHQ console and click on Push 
 B. Select desired user from registered UserList and click on Send Message Button.
 C. Send appropriate message to user by clicking Send Button.
 ```
+
+__PusHNotification Registration Steps :__
+  
+```
+A. First we have to register our device on Google Cloud Messaging(GCM) using Google ProjectNo.
+     
+     GCMRegistrar.register(App42API.appContext, senderId);
+     
+B. After that when we get GCM registration id , we have to register on APP42 Platform.
+ 
+  final String deviceRegId = GCMRegistrar.getRegistrationId(App42API.appContext);
+  App42API.buildPushNotificationService().storeDeviceToken(App42API.getLoggedInUser(), deviceRegId, new App42CallBack() {
+
+                            @Override
+                            public void onSuccess(Object paramObject) {
+                                // TODO Auto-generated method stub
+                                App42Log.debug(" ..... Registeration Success ....");
+    GCMRegistrar.setRegisteredOnServer(App42API.appContext, true);
+                            }
+
+                            @Override
+                            public void onException(Exception paramException) {
+                                App42Log.debug(" ..... Registeration Failed ....");
+                                App42Log.debug("storeDeviceToken : Exception : on start up " +paramException);
+
+                            }
+                        });
+
+```
 # Design Details:
 __Intialization :__ You have to initialize  your application first before registering for PushNotification in your MainActivty.java file.
 
