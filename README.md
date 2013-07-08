@@ -26,9 +26,9 @@ Here are the few easy steps to run this sample app.
 12. Open MainActivty.java file in sample app and make these changes.
 
 ```
-A. Replace api-Key and secret-Key that you have received in step 2 or 3.
-B. Replace project-no with your Google Project Number.
-C. Replace your user-id by which you want to register your application for PushNotification.
+A. Replace api-Key and secret-Key that you have received in step 2 or 3 at line number 18 and 19.
+C. Replace your user-id by which you want to register your application for PushNotification at line number 20.
+B. Replace project-no with your Google Project Number at line number 21.
 ```
 13.Build your android application.
 
@@ -41,6 +41,18 @@ B. Select desired user from registered UserList and click on Send Message Button
 C. Send appropriate message to user by clicking Send Button.
 ```
 
+
+# Design Details:
+__Intialization :__ You have to initialize  your application first before registering for PushNotification in your MainActivty.java file.
+
+```
+    App42API.initialize(
+        this,
+        "<YOUR API KEY>",
+        "<YOUR SECRET KEY>");
+     App42API.setLoggedInUser("YOUR USER ID") ;
+    Util.registerWithApp42("<Your Google Project No>")
+```
 __PusHNotification Registration Steps :__
   
 ```
@@ -69,51 +81,3 @@ B. After that when we get GCM registration id , we have to register on APP42 Pla
                         });
 
 ```
-# Design Details:
-__Intialization :__ You have to initialize  your application first before registering for PushNotification in your MainActivty.java file.
-
-```
-    App42API.initialize(
-        this,
-        "<YOUR API KEY>",
-        "<YOUR SECRET KEY>");
-     App42API.setLoggedInUser("YOUR USER ID") ;
-    Util.registerWithApp42("<Your Google Project No>")
-```
-__Push Registration:__ To use Notification message in your game you have to register your game for PushNotification
-by calling this method in your Util.java file.
-
-```
-public static void registerWithApp42(String senderId) {
-        App42Log.debug(" ..... Registeration Check ....");
-        GCMIntentService.setSenderId(senderId);
-            final String deviceRegId = GCMRegistrar.getRegistrationId(App42API.appContext);
-            if (deviceRegId.equals("")) {
-                // Automatically registers application on startup.
-                GCMRegistrar.register(App42API.appContext, senderId);
-
-            } else if(!GCMRegistrar.isRegisteredOnServer(App42API.appContext)) {
-                    App42Log.debug(" Registering on Server ....");
-
-App42API.buildPushNotificationService().storeDeviceToken(App42API.getLoggedInUser(), deviceRegId, new App42CallBack() {
-
-                            @Override
-                            public void onSuccess(Object paramObject) {
-                                // TODO Auto-generated method stub
-                                App42Log.debug(" ..... Registeration Success ....");
-GCMRegistrar.setRegisteredOnServer(App42API.appContext, true);
-                            }
-
-                            @Override
-                            public void onException(Exception paramException) {
-                                App42Log.debug(" ..... Registeration Failed ....");
-                                App42Log.debug("storeDeviceToken : Exception : on start up " +paramException);
-
-                            }
-                        });
-
-
-                }
-            }
-
-``` 
