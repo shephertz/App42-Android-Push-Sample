@@ -46,7 +46,8 @@ __Send Message using App42 API :__ If you want to send PushNotification using Ap
 message in below method .
   
 ```
-PushNotificationService pushService.sendPushMessageToUser(userId,message);
+PushNotificationService pushService=App42API.buildPushNotificationService();
+pushService.sendPushMessageToUser(userId,message);
 
 ```
 
