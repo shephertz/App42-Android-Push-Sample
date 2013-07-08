@@ -7,7 +7,6 @@ App42-Android-Push-Library
 1. This application shows how can we integrate our application for PushNotification using App42 API.
 2. We can use this sample as a library project for our android application.
 
-
 # Running Sample
 
 This is a sample Android gaming app is made by using App42 backend platform. It uses Push Notification of App42 platform.
@@ -50,6 +49,7 @@ __Intialization :__ You have to initialize  your application first before regist
         "<YOUR API KEY>",
         "<YOUR SECRET KEY>");
      App42API.setLoggedInUser("YOUR USER ID") ;
+    Util.registerWithApp42("<Your Google Project No>")
 ```
 __Push Registration:__ To use Notification message in your game you have to register your game for PushNotification
 by calling this method in your Util.java file.
