@@ -8,13 +8,13 @@ import com.shephertz.app42.paas.sdk.android.App42Log;
 public class Util {
 	
 	
-	public static void registerWithApp42(String senderId) {
+	public static void registerWithApp42(String projectNo) {
 		App42Log.debug(" ..... Registeration Check ....");
-		GCMIntentService.setSenderId(senderId);
+		GCMIntentService.setSenderId(projectNo);
 			final String deviceRegId = GCMRegistrar.getRegistrationId(App42API.appContext);
 			if (deviceRegId.equals("")) {
 				// Automatically registers application on startup.
-				GCMRegistrar.register(App42API.appContext, senderId);
+				GCMRegistrar.register(App42API.appContext, projectNo);
 				
 			} else if(!GCMRegistrar.isRegisteredOnServer(App42API.appContext)) {
 					App42Log.debug(" Registering on Server ....");
