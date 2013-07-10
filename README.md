@@ -1,4 +1,4 @@
-App42-Android-Push-Library
+App42-Android-Push-Sample
 ==========================
 
 
