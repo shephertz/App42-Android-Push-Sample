@@ -9,7 +9,7 @@ App42-Android-Push-Sample
 
 # Running Sample
 
-This is a sample Android gaming app is made by using App42 backend platform. It uses Push Notification of App42 platform.
+This is a sample Android app is made by using App42 backend platform. It uses Push Notification of App42 platform.
 Here are the few easy steps to run this sample app.
 
 1. [Register] (https://apphq.shephertz.com/register) with App42 platform.
