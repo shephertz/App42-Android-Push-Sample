@@ -48,42 +48,28 @@ pushService.sendPushMessageToUser(userId,message);
 
 ```
 
-# Design Details:
-__Intialization :__ You have to initialize  your application first before registering for PushNotification in your MainActivty.java file.
 
-```
-    App42API.initialize(
-        this,
-        "<YOUR API KEY>",
-        "<YOUR SECRET KEY>");
-     App42API.setLoggedInUser("YOUR USER ID") ;
-    Util.registerWithApp42("<Your Google Project No>")
-```
-__PusHNotification Registration Steps :__
+__Customize PushNotification Message:__ You can customize your PushNotification message by changing following code in GCMIntentService.java file.
   
 ```
-A. First we have to register our device on Google Cloud Messaging(GCM) using Google ProjectNo.
-     
-     GCMRegistrar.register(App42API.appContext, senderId);
-     
-B. After that when we get GCM registration id , we have to register on APP42 Platform.
- 
-  final String deviceRegId = GCMRegistrar.getRegistrationId(App42API.appContext);
-  App42API.buildPushNotificationService().storeDeviceToken(App42API.getLoggedInUser(), deviceRegId, new App42CallBack() {
+  Notification notification = new NotificationCompat.Builder(context)
+        .setContentTitle(title)
+        .setContentText(message)
+        .setContentIntent(intent)
+        .setSmallIcon(icon)
+        .setWhen(when)
+        .setLargeIcon(getBitmapFromURL(LARGE_IMAGE_URL))
+        .setLights(Color.YELLOW, 1, 2)
+        .setAutoCancel(true)
+        .build();
+        notificationManager.notify(0, notification);
 
-                            @Override
-                            public void onSuccess(Object paramObject) {
-                                // TODO Auto-generated method stub
-                                App42Log.debug(" ..... Registeration Success ....");
-    GCMRegistrar.setRegisteredOnServer(App42API.appContext, true);
-                            }
+```
 
-                            @Override
-                            public void onException(Exception paramException) {
-                                App42Log.debug(" ..... Registeration Failed ....");
-                                App42Log.debug("storeDeviceToken : Exception : on start up " +paramException);
-
-                            }
-                        });
+__ Change Message Activty:__ You can novigate to desired Activty ,which you want to open when Notification is clicked. For thic you can replace MessageActivity with 
+that Activty you want to navigate in AndroidManifest.xml file. 
+  
+```
+     <meta-data android:name="onMessageOpen" android:value="com.example.app42sample.MessageActivity" />
 
 ```
