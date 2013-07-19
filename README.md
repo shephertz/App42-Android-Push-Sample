@@ -66,7 +66,7 @@ __Customize PushNotification Message:__ You can also customize your PushNotifica
 
 ```
 
-__Change Message Activty:__ You can navigate to desired Activty ,which you want to open when Notification is clicked. For this you can replace MessageActivity with 
+__Change Message Activty:__ You can navigate to desired Activty ,when message is open. For this you can replace MessageActivity with 
 that Activty in AndroidManifest.xml file. 
   
 ```
