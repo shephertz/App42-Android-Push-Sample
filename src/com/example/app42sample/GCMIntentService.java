@@ -146,6 +146,7 @@ public class GCMIntentService extends GCMBaseIntentService{
 		try {
 			notificationIntent = new Intent(context, Class.forName(activityName));
 			notificationIntent.putExtra("message_delivered", true);
+			notificationIntent.putExtra(EXTRA_MESSAGE, message);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -9,6 +9,11 @@
         android:layout_height="fill_parent"
         android:gravity="bottom"
         android:orientation="vertical" >
+        
+         <TextView android:id="@+id/text"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Hello, Send message from AppHQ console, it would display here." />
 
         <Button
             android:id="@+id/button1"
