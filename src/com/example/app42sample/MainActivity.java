@@ -24,8 +24,8 @@ public class MainActivity extends App42Activity {
 	                this,
 	                "<YOUR API KEY>",
 	                "<YOUR SECRET KEY>");
-	     App42API.setLoggedInUser("<Logged In User>") ;
-	    Util.registerWithApp42("<Your Google Project No>");
+	        App42API.setLoggedInUser("<Logged In User>") ;
+	        Util.registerWithApp42("<Your Google Project No>");
 	}
 
 	public void onClick(View view) {
@@ -94,11 +94,11 @@ public class MainActivity extends App42Activity {
 	 */
 	public void onResume() {
 		super.onResume();
-		 String message = getIntent().getStringExtra(GCMIntentService.EXTRA_MESSAGE); 
-	     Log.d("MainActivity-onResume", "Message Recieved :"+message);
-	     IntentFilter filter = new IntentFilter(GCMIntentService.DISPLAY_MESSAGE_ACTION);
-	     filter.setPriority(2);
-	     registerReceiver(mBroadcastReceiver, filter);
+		String message = getIntent().getStringExtra(GCMIntentService.EXTRA_MESSAGE); 
+	        Log.d("MainActivity-onResume", "Message Recieved :"+message);
+	        IntentFilter filter = new IntentFilter(GCMIntentService.DISPLAY_MESSAGE_ACTION);
+	        filter.setPriority(2);
+	        registerReceiver(mBroadcastReceiver, filter);
 	}
 	
 	 final BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
@@ -106,7 +106,6 @@ public class MainActivity extends App42Activity {
 	        @Override
 	        public void onReceive(Context context, Intent intent) {
 	        	
-	            //Right here do what you want in your activity
 	        	String message = intent.getStringExtra(GCMIntentService.EXTRA_MESSAGE);
 	        	Log.i("MainActivity-BroadcastReceiver", "Message Recieved " +" : " +message);
 	        	((TextView) findViewById(R.id.text)).setText(message);
