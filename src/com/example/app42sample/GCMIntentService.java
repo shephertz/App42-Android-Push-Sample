@@ -157,7 +157,7 @@ public class GCMIntentService extends GCMBaseIntentService{
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
                 Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent intent =
-                PendingIntent.getActivity(context, 0, notificationIntent, 0);
+                PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
         
         Notification notification = new NotificationCompat.Builder(context)
         .setContentTitle(title)
