@@ -62,6 +62,8 @@ __Customize PushNotification Message:__ You can also customize your PushNotifica
         .setLights(Color.YELLOW, 1, 2)
         .setAutoCancel(true)
         .build();
+        notification.defaults |= Notification.DEFAULT_SOUND;
+		    notification.defaults |= Notification.DEFAULT_VIBRATE;
         notificationManager.notify(0, notification);
 
 ```
