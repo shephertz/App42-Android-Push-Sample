@@ -26,6 +26,7 @@ public class MainActivity extends App42Activity {
 	                "<YOUR SECRET KEY>");
 	        App42API.setLoggedInUser("<Logged In User>") ;
 	        Util.registerWithApp42("<Your Google Project No>");
+		
 	}
 
 	public void onClick(View view) {
