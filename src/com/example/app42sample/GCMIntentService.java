@@ -170,6 +170,8 @@ public class GCMIntentService extends GCMBaseIntentService{
         .setAutoCancel(true)
         .build();
         
+        notification.defaults |= Notification.DEFAULT_SOUND;
+	notification.defaults |= Notification.DEFAULT_VIBRATE;
         notificationManager.notify(0, notification);
     }
     
