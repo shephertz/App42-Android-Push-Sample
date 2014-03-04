@@ -3,6 +3,7 @@
  */
 package com.example.app42sample;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -12,13 +13,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.shephertz.app42.paas.sdk.android.App42Activity;
-
 /**
  * @author Ajay Tiwari
  * 
  */
-public class MessageActivity extends App42Activity {
+public class MessageActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -34,8 +33,6 @@ public class MessageActivity extends App42Activity {
 	}
 
 	public void onClick(View view) {
-		super.onClick(view);
-
 		Intent intent = new Intent(this, MainActivity.class);
 		startActivity(intent);
 

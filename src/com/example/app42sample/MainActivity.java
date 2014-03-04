@@ -1,18 +1,17 @@
 package com.example.app42sample;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 import com.shephertz.app42.paas.sdk.android.App42API;
-import com.shephertz.app42.paas.sdk.android.App42Activity;
 
-public class MainActivity extends App42Activity {
+public class MainActivity extends Activity {
 
 
 	@Override
@@ -29,10 +28,6 @@ public class MainActivity extends App42Activity {
 		
 	}
 
-	public void onClick(View view) {
-		super.onClick(view);
-
-	}
 
 	public void onStart() {
 		super.onStart();
