@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -21,6 +22,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+
 import com.google.android.gcm.GCMBaseIntentService;
 import com.google.android.gcm.GCMRegistrar;
 import com.shephertz.app42.paas.sdk.android.App42API;
@@ -31,7 +33,7 @@ import com.shephertz.app42.paas.sdk.android.App42Log;
  * @author Ajay Tiwari
  * 
  */
-public class GCMIntentService extends GCMBaseIntentService {
+public class App42GCMService extends GCMBaseIntentService {
 	public static String PROJECT_NUMBER = "";
 	static final String LARGE_IMAGE_URL = "<YOUR IMAGE URL>";
 	static int msgCount=0;
@@ -46,7 +48,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 	 */
 	static final String EXTRA_MESSAGE = "message";
 
-	public GCMIntentService() {
+	public App42GCMService() {
 		super(PROJECT_NUMBER);
 	}
 

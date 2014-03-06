@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.shephertz.app42.paas.sdk.android.App42API;
@@ -26,6 +27,12 @@ public class MainActivity extends Activity {
 	        App42API.setLoggedInUser("<Logged In User>") ;
 	        Util.registerWithApp42("<Your Google Project No>");
 		
+	}
+
+	public void onClick(View view) {
+		Intent intent = new Intent(this, MessageActivity.class);
+		startActivity(intent);
+
 	}
 
 
@@ -90,9 +97,9 @@ public class MainActivity extends Activity {
 	 */
 	public void onResume() {
 		super.onResume();
-		String message = getIntent().getStringExtra(GCMIntentService.EXTRA_MESSAGE); 
+		String message = getIntent().getStringExtra(App42GCMService.EXTRA_MESSAGE); 
 	        Log.d("MainActivity-onResume", "Message Recieved :"+message);
-	        IntentFilter filter = new IntentFilter(GCMIntentService.DISPLAY_MESSAGE_ACTION);
+	        IntentFilter filter = new IntentFilter(App42GCMService.DISPLAY_MESSAGE_ACTION);
 	        filter.setPriority(2);
 	        registerReceiver(mBroadcastReceiver, filter);
 	}
@@ -102,15 +109,10 @@ public class MainActivity extends Activity {
 	        @Override
 	        public void onReceive(Context context, Intent intent) {
 	        	
-	        	String message = intent.getStringExtra(GCMIntentService.EXTRA_MESSAGE);
+	        	String message = intent.getStringExtra(App42GCMService.EXTRA_MESSAGE);
 	        	Log.i("MainActivity-BroadcastReceiver", "Message Recieved " +" : " +message);
 	        	((TextView) findViewById(R.id.text)).setText(message);
 	        	
 	        }
 	    };
-
-
-
-
-
 }

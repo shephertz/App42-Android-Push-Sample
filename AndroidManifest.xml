@@ -38,7 +38,7 @@
         android:theme="@style/AppTheme"
          >
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.app42sample.MainActivity"
             android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,7 +47,7 @@
             </intent-filter>
         </activity>
           <activity
-            android:name="MessageActivity"
+            android:name="com.example.app42sample.MessageActivity"
             android:label="@string/title_activity_main" >
           
         </activity>
@@ -61,7 +61,7 @@
           so only GCM services can send data messages for the app.
         -->
         <receiver
-            android:name="com.google.android.gcm.GCMBroadcastReceiver"
+            android:name="com.example.app42sample.App42GCMReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
 
@@ -69,7 +69,7 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <!-- Receives the registration id. -->
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-
+                    <!-- Your package name here -->
                 <category android:name="com.example.app42sample" />
             </intent-filter>
         </receiver>
@@ -81,7 +81,7 @@
           By default, it must be named .GCMIntentService, unless the
           application uses a custom BroadcastReceiver that redefines its name.
         -->
-        <service android:name=".GCMIntentService" >
+        <service android:name="com.example.app42sample.App42GCMService" >
             <meta-data android:name="onMessageOpen" android:value="com.example.app42sample.MessageActivity" />
         </service>
     </application>

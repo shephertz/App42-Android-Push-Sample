@@ -25,26 +25,24 @@ public class MessageActivity extends Activity {
 		((TextView) findViewById(R.id.page_header)).setText("Message Activty");
 
 		String message = getIntent().getStringExtra(
-				GCMIntentService.EXTRA_MESSAGE);
-		GCMIntentService.resetMsgCount();
+				App42GCMService.EXTRA_MESSAGE);
+		App42GCMService.resetMsgCount();
 		((TextView) findViewById(R.id.text)).setText(message);
 
 		Log.d("MessageActivity-onCreate", "Message Recieved :" + message);
 	}
 
 	public void onClick(View view) {
-		Intent intent = new Intent(this, MainActivity.class);
-		startActivity(intent);
-
+	finish();
 	}
 
 	public void onResume() {
 		super.onResume();
 		String message = getIntent().getStringExtra(
-				GCMIntentService.EXTRA_MESSAGE);
+				App42GCMService.EXTRA_MESSAGE);
 		Log.d("MessageActivity-onResume", "Message Recieved :" + message);
 		IntentFilter filter = new IntentFilter(
-				GCMIntentService.DISPLAY_MESSAGE_ACTION);
+				App42GCMService.DISPLAY_MESSAGE_ACTION);
 		filter.setPriority(2);
 		registerReceiver(mBroadcastReceiver, filter);
 	}
@@ -62,11 +60,11 @@ public class MessageActivity extends Activity {
 
 			// Right here do what you want in your activity
 			String message = intent
-					.getStringExtra(GCMIntentService.EXTRA_MESSAGE);
+					.getStringExtra(App42GCMService.EXTRA_MESSAGE);
 			Log.i("MessageActivity-BroadcastReceiver", "Message Recieved "
 					+ " : " + message);
 			((TextView) findViewById(R.id.text)).setText(message);
-			GCMIntentService.resetMsgCount();
+			App42GCMService.resetMsgCount();
 
 		}
 	};

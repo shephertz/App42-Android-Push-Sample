@@ -10,13 +10,13 @@ public class Util {
 	
 	public static void registerWithApp42(String projectNo) {
 		App42Log.debug(" ..... Registeration Check ....");
-		GCMIntentService.setSenderId(projectNo);
+		App42GCMService.setSenderId(projectNo);
 			final String deviceRegId = GCMRegistrar.getRegistrationId(App42API.appContext);
 			if (deviceRegId.equals("")) {
 				// Automatically registers application on startup.
 				GCMRegistrar.register(App42API.appContext, projectNo);
 				
-			} else if(!GCMRegistrar.isRegisteredOnServer(App42API.appContext)) {
+			} else  {
 					App42Log.debug(" Registering on Server ....");
 					
 						App42API.buildPushNotificationService().storeDeviceToken(App42API.getLoggedInUser(), deviceRegId, new App42CallBack() {
