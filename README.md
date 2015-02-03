@@ -49,29 +49,90 @@ pushService.sendPushMessageToUser(userId,message);
 ```
 
 
-__Customize PushNotification Message:__ You can also customize your PushNotification message by changing following code in GCMIntentService.java file accordingly.
+__Customize PushNotification Message:__ You can also customize your PushNotification message by changing following code in App42GCMService.java file accordingly.
   
 ```
   Notification notification = new NotificationCompat.Builder(context)
-        .setContentTitle(title)
-        .setContentText(message)
-        .setContentIntent(intent)
-        .setSmallIcon(icon)
-        .setWhen(when)
-        .setLargeIcon(getBitmapFromURL(LARGE_IMAGE_URL))
-        .setLights(Color.YELLOW, 1, 2)
-        .setAutoCancel(true)
-        .build();
-        notification.defaults |= Notification.DEFAULT_SOUND;
-		    notification.defaults |= Notification.DEFAULT_VIBRATE;
-        notificationManager.notify(0, notification);
+				.setContentTitle(title)
+				.setContentText(message)
+				.setContentIntent(intent)
+				.setSmallIcon(icon)
+				.setWhen(when)
+				.setNumber(++msgCount)
+				.setLargeIcon(getBitmapFromURL(LARGE_IMAGE_URL))
+				.setLights(Color.YELLOW, 1, 2).setAutoCancel(true).build();
+
+		notification.defaults |= Notification.DEFAULT_SOUND;
+		notification.defaults |= Notification.DEFAULT_VIBRATE;
+		notificationManager.notify(0, notification);
 
 ```
+
+__PushNotification Registration:__ Push Notification registration is done by code written in MainActivty.java file.
+  
+```
+      App42API.initialize(
+	                this,
+	                "<YOUR API KEY>",
+	                "<YOUR SECRET KEY>");
+	        App42API.setLoggedInUser("<Logged In User>") ;
+	        Util.registerWithApp42("<Your Google Project No>");
+
+```
+
 
 __Change Message Activty:__ You can navigate to desired Activty ,when message is open. For this you can replace MessageActivity with 
 that Activty in AndroidManifest.xml file. 
   
 ```
      <meta-data android:name="onMessageOpen" android:value="com.example.app42sample.MessageActivity" />
+
+```
+
+__Customize Application package name__ If you want to customize sample according your Application package name,please 
+make these changes in AndroidManifest.xml file. 
+  
+```
+ <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+     <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- GCM requires a Google account. -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <!-- Keeps the processor from sleeping when a message is received. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!--
+     Creates a custom permission so only this app can receive its messages.
+
+     NOTE: the permission *must* be called PACKAGE.permission.C2D_MESSAGE,
+           where PACKAGE is the application's package name.
+    -->
+    <permission
+        android:name="<Your Package Name>.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="<Your Package Name>.permission.C2D_MESSAGE" />
+
+    <!-- This app has permission to register and receive data message. -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    
+    <receiver
+            android:name="com.example.app42sample.App42GCMReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+
+                <!-- Receives the actual messages. -->
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <!-- Receives the registration id. -->
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                    <!-- Your package name here -->
+                <category android:name="<Your Package Name>" />
+            </intent-filter>
+        </receiver>
+         <service android:name="com.example.app42sample.App42GCMService" >
+        </service>
+     
 
 ```
