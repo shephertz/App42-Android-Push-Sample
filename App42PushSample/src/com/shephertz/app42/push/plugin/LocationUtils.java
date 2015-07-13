@@ -1,6 +1,6 @@
 /**
  * -----------------------------------------------------------------------
- *     Copyright © 2015 ShepHertz Technologies Pvt Ltd. All rights reserved.
+ *     Copyright Â© 2015 ShepHertz Technologies Pvt Ltd. All rights reserved.
  * -----------------------------------------------------------------------
  */
 package com.shephertz.app42.push.plugin;
@@ -85,7 +85,7 @@ public class LocationUtils {
 				if (mApp42Preference == null)
 					init(context);
 				Location myLocation = getLocation(myLattitude, myLong);
-				float distanceInMeters = (targetLocation.distanceTo(myLocation) / 1000);
+				float distanceInMeters = (targetLocation.distanceTo(myLocation) * 1000);
 				if (distanceInMeters <= radius)
 					isSuccess = true;
 			}
