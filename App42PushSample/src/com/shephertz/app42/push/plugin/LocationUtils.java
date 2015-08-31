@@ -85,8 +85,8 @@ public class LocationUtils {
 				if (mApp42Preference == null)
 					init(context);
 				Location myLocation = getLocation(myLattitude, myLong);
-				float distanceInMeters = (targetLocation.distanceTo(myLocation) * 1000);
-				if (distanceInMeters <= radius)
+				float distanceInKm = (targetLocation.distanceTo(myLocation) / 1000);
+				if (distanceInKm <= radius)
 					isSuccess = true;
 			}
 			return isSuccess;
