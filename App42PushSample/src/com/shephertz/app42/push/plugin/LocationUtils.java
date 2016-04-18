@@ -72,6 +72,8 @@ public class LocationUtils {
 	public static boolean isGeoBaseSuccess(JSONObject jsonData, Context context) {
 
 		try {
+				if (mApp42Preference == null)
+					init(context);
 			boolean isSuccess = false;
 			double myLattitude = Double.parseDouble(mApp42Preference.getString(
 					KeyLat, "0.0"));
@@ -82,8 +84,7 @@ public class LocationUtils {
 				double app42Long = jsonData.getDouble(KeyLong);
 				double radius = jsonData.getDouble(KeyRadius);
 				Location targetLocation = getLocation(app42Lat, app42Long);
-				if (mApp42Preference == null)
-					init(context);
+			
 				Location myLocation = getLocation(myLattitude, myLong);
 				float distanceInKm = (targetLocation.distanceTo(myLocation) / 1000);
 				if (distanceInKm <= radius)
