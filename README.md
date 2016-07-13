@@ -232,6 +232,9 @@ So make following changes in your AndroidManifest.xml using this sample's Androi
 ```
  <service android:name="com.shephertz.app42.push.plugin.App42GCMService" >
         </service>
+         <!-- For Geo Fencing -->
+            <service android:name="com.shephertz.app42.push.fencing.GeofenceTransitionsIntentService" />
+
 ```
 4.Replace "com.example.app42sample" with your application package name in AndroidManifest.xml file.
 5. Add Meta Data Details in AndroidManifest.xml file.
