@@ -197,8 +197,8 @@ public class App42FenceManager implements ConnectionCallbacks,
 				fenceJson = fencingCords.getJSONObject(i);
 				long id = fenceJson.optLong("app42_geoFenceId", 0);
 				String requestId = getRequestId(id, campaignName);
+				float radius =(float)( fenceJson.optDouble(App42Util.KeyRadius, 0.0)*1000);
 				requestIdArr.put(id);
-
 				geofenceList
 						.add(new Geofence.Builder()
 								.setRequestId(requestId)
@@ -207,8 +207,7 @@ public class App42FenceManager implements ConnectionCallbacks,
 												0.0),
 										fenceJson.optDouble(App42Util.KeyLong,
 												0.0),
-										(float) fenceJson.optDouble(
-												App42Util.KeyRadius, 0.0))
+										radius)
 								.setExpirationDuration(Geofence.NEVER_EXPIRE)
 								.setTransitionTypes(
 										getTransitionState(isOnEntry, isOnExit,
