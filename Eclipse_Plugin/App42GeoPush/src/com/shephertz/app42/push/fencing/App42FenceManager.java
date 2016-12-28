@@ -248,7 +248,7 @@ public class App42FenceManager implements ConnectionCallbacks,
 		int sepIndex = requestId.indexOf("-");
 		if (sepIndex > 0) {
 			JSONObject props = new JSONObject();
-			props.put("event", "dwell");
+			props.put("event", geoEvent);
 			props.put("campaignName", requestId.substring(0, sepIndex));
 			props.put("geoFenceId", requestId.substring(sepIndex));
 			return props;
