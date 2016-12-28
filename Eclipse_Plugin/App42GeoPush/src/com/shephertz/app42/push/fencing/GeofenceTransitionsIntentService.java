@@ -134,11 +134,11 @@ public class GeofenceTransitionsIntentService extends IntentService {
     private String getTransitionString(int transitionType) {
         switch (transitionType) {
             case Geofence.GEOFENCE_TRANSITION_ENTER:
-                return "Entry";
+                return "entry";
             case Geofence.GEOFENCE_TRANSITION_EXIT:
-                return "Exit";
+                return "exit";
             default:
-                return "Dwell";
+                return "dwell";
         }
     }
 }
