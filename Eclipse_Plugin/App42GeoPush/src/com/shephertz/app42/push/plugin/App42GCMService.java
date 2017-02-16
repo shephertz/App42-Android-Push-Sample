@@ -172,7 +172,7 @@ public class App42GCMService extends IntentService {
 		if(campaignName==null||campaignName.isEmpty())
 			return;
 		HashMap<String, String> otherMetaHeaders = new HashMap<String, String>();
-		otherMetaHeaders.put("pushIdentifier", "Diwali");
+		otherMetaHeaders.put("pushIdentifier", campaignName);
 		  if (App42API.appApiKey == null
 					|| App42API.appApiKey.equals(""))
 				App42Preferences.instance().resetApp42API(this);
