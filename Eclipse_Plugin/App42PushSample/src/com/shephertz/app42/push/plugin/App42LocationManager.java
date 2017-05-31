@@ -1,6 +1,6 @@
 /**
  * -----------------------------------------------------------------------
- *     Copyright © 2015 ShepHertz Technologies Pvt Ltd. All rights reserved.
+ *     Copyright Â© 2015 ShepHertz Technologies Pvt Ltd. All rights reserved.
  * -----------------------------------------------------------------------
  */
 package com.shephertz.app42.push.plugin;
@@ -21,7 +21,7 @@ import com.shephertz.app42.paas.sdk.android.App42Exception;
  *
  */
 public class App42LocationManager {
-	
+	try{
 	public static void fetchGPSLocation(Context context,App42LocationListener callback) {
 		// Getting LocationManager object
 		Location location = null;
@@ -43,6 +43,9 @@ public class App42LocationManager {
 			callback.onLocationException(new App42Exception("GPS is Disable"));
 		else
 			getLocationAddress(location, callback);
+		}catch(Throwable w){
+			callback.onLocationException(new App42Exception("User denied for location permission"));
+		}
 	}
 
 	/**
