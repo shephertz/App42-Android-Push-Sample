@@ -21,9 +21,10 @@ import com.shephertz.app42.paas.sdk.android.App42Exception;
  *
  */
 public class App42LocationManager {
-	try{
+	
 	public static void fetchGPSLocation(Context context,App42LocationListener callback) {
 		// Getting LocationManager object
+		try{
 		Location location = null;
 		LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 		if (locationManager == null)
