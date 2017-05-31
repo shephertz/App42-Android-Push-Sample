@@ -32,6 +32,7 @@ public class App42LocationManager {
 	 */
 	public static void fetchGPSLocation(Context context,App42LocationListener callback) {
 		// Getting LocationManager object
+	try{
 		Location location = null;
 		LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 		if (locationManager == null)
@@ -51,6 +52,9 @@ public class App42LocationManager {
 			callback.onLocationException(new App42Exception("GPS is Disable"));
 		else
 			getLocationAddress(location, callback);
+	}catch(Throwable w){
+			callback.onLocationException(new App42Exception("User denied for location permission"));
+		}
 	}
 
 	/**
