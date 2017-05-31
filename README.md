@@ -2,6 +2,7 @@
 1. This application shows how can we integrate PushNotification using App42 Android SDK in Android application.
 2. Here We are using new Google Cloud Messaging API provided by Google as we know old one are depricated.
 3. How we can send PushNotification using App42 PushNotification API.
+4. Please do add location permission check for security in case of location based Push Notifications. 
 
 # Running Sample
 This is a Android sample app made by using App42 API. It uses PushNotification API of App42 platform.
