@@ -43,7 +43,7 @@ public class App42LocationManager {
 		if (location == null)
 			callback.onLocationException(new App42Exception("GPS is Disable"));
 		else
-			getLocationAddress(location, callback);
+			getLocationAddress(location, callback,context);
 		}catch(Throwable w){
 			callback.onLocationException(new App42Exception("User denied for location permission"));
 		}
@@ -53,12 +53,12 @@ public class App42LocationManager {
 	 * @param jsonArray
 	 */
 	private static void getLocationAddress(final Location location,
-			final App42LocationListener callback) {
+			final App42LocationListener callback,final Context context) {
 		new Thread() {
 			@Override
 			public void run() {
 				try {
-					Geocoder geocoder = new Geocoder(App42API.appContext,
+					Geocoder geocoder = new Geocoder(context,
 							Locale.getDefault());
 					List<Address> addresses = null;
 					addresses = geocoder.getFromLocation(
@@ -76,8 +76,7 @@ public class App42LocationManager {
 						callback.onLocationFetched(location);
 				} catch (Exception ex) {
 					ex.printStackTrace();
-					callback.onLocationException(new App42Exception(ex
-							.getMessage()));
+					callback.onLocationFetched(location);
 				}
 			}
 		}.start();
