@@ -26,7 +26,7 @@ A. Replace 'api-Key' and 'secret-Key' that you have received from your App42 pro
 B. Replace your 'user-id' by which you want to register your application for PushNotification (It must be unique for each user. You can use your unique login credendial or deviceId).
 
 ```
-12.Build your android application and install on your android device.
+12. Build your android application and install on your android device.
 
 __Test and verify PushNotification from AppHQ console__
  
@@ -37,4 +37,4 @@ B. Select desired user from registered User-list and click on Send Message Butto
 C. Send appropriate message to user by clicking Send Button.
 
 ```
-__For more detailed info please click on the link [App42 Push Notification Detailed Doc] (http://api.shephertz.com/tutorial/Push-Notification-Android/?index=pn-android) __
+__For more detailed info please click on the link [App42 Push Notification Detailed Doc] (http://api.shephertz.com/tutorial/Push-Notification-Android/?index=pn-android)__
